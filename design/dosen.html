@@ -80,14 +80,14 @@
     </nav>
 
     <div class="container">
-        <div class="modal fade" tabindex="-1" role="dialog" id="form-mahasiswa">
+        <div class="modal fade" tabindex="-1" role="dialog" id="form-dosen">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header"><h3>Form Mahasiswa</h3></div>
+                    <div class="modal-header"><h3>Form Dosen</h3></div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="nim">NIM</label>
-                            <input type="text" id="nim" class="form-control">
+                            <label for="iddosen">ID Dosen</label>
+                            <input type="text" id="iddosen" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="nama">Nama</label>
@@ -100,6 +100,10 @@
                         <div class="form-group">
                             <label for="telepon">Telepon</label>
                             <input type="text" id="telepon" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -114,31 +118,33 @@
 
         <div class="page-header">
             <h1><span class="glyphicon glyphicon-briefcase"></span> 
-                Mahasiswa <small>Berisi Informasi Data Mahasiswa</small></h1> 
+                Dosen <small>Berisi Informasi Data Dosen</small></h1> 
         </div>
 
         <button class="btn btn-success pull-right" 
-            data-toggle="modal" data-target="#form-mahasiswa">
+            data-toggle="modal" data-target="#form-dosen">
             <span class="glyphicon glyphicon-plus"></span> Tambah</button>
         <div class="clearfix"></div>
         <table class="table table-bordered table-striped table-hover"
             style="margin-top:10px;">
             <thead>
                 <tr>
-                    <th>NIM</th>
+                    <th>ID Dosen</th>
                     <th>Nama</th>
                     <th>Alamat</th>
                     <th>Telepon</th>
+                    <th>Email</th>
                     <th colspan="2">Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>001</td>
-                    <td>Budi</td>
-                    <td>Sei Deli</td>
-                    <td>061888811</td>
-                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-mahasiswa">
+                    <td>D002</td>
+                    <td>Andi</td>
+                    <td>Sekip</td>
+                    <td>081XXXXX</td>
+                    <td>andi@gmail.com</td>
+                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-dosen">
                         <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
                     </td>
                     <td><button class="btn btn-danger btn-block">
@@ -146,11 +152,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>001</td>
-                    <td>Budi</td>
-                    <td>Sei Deli</td>
-                    <td>061888811</td>
-                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-mahasiswa">
+                    <td>D002</td>
+                    <td>Andi</td>
+                    <td>Sekip</td>
+                    <td>081XXXXX</td>
+                    <td>andi@gmail.com</td>
+                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-dosen">
                         <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
                     </td>
                     <td><button class="btn btn-danger btn-block">
@@ -158,11 +165,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>001</td>
-                    <td>Budi</td>
-                    <td>Sei Deli</td>
-                    <td>061888811</td>
-                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-mahasiswa">
+                    <td>D002</td>
+                    <td>Andi</td>
+                    <td>Sekip</td>
+                    <td>081XXXXX</td>
+                    <td>andi@gmail.com</td>
+                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-dosen">
                         <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
                     </td>
                     <td><button class="btn btn-danger btn-block">
@@ -170,12 +178,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>001</td>
-                    <td>Budi</td>
-                    <td>Sei Deli</td>
-                    <td>061888811</td>
-                    <td><button class="btn btn-warning btn-block" 
-                            data-toggle="modal" data-target="#form-mahasiswa">
+                    <td>D002</td>
+                    <td>Andi</td>
+                    <td>Sekip</td>
+                    <td>081XXXXX</td>
+                    <td>andi@gmail.com</td>
+                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-dosen">
                         <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
                     </td>
                     <td><button class="btn btn-danger btn-block">
@@ -183,11 +191,25 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>001</td>
-                    <td>Budi</td>
-                    <td>Sei Deli</td>
-                    <td>061888811</td>
-                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-mahasiswa">
+                    <td>D002</td>
+                    <td>Andi</td>
+                    <td>Sekip</td>
+                    <td>081XXXXX</td>
+                    <td>andi@gmail.com</td>
+                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-dosen">
+                        <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
+                    </td>
+                    <td><button class="btn btn-danger btn-block">
+                        <span class="glyphicon glyphicon-trash"></span> Hapus</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>D002</td>
+                    <td>Andi</td>
+                    <td>Sekip</td>
+                    <td>081XXXXX</td>
+                    <td>andi@gmail.com</td>
+                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-dosen">
                         <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
                     </td>
                     <td><button class="btn btn-danger btn-block">

@@ -31,7 +31,7 @@
 
                         <ul class="dropdown-menu">
                             <li><a href="mahasiswa.html">Mahasiswa</a></li>
-                            <li><a href="kelas.html">kelas</a></li>
+                            <li><a href="matakuliah.html">matakuliah</a></li>
                             <li><a href="kelas.html">Kelas</a></li>
                             <li><a href="matakuliah.html">Mata Kuliah</a></li>
                             <li class="divider"></li>
@@ -57,7 +57,7 @@
 
                         <ul class="dropdown-menu">
                             <li><a href="#">Lap.Mahasiswa</a></li>
-                            <li><a href="#">Lap.kelas</a></li>
+                            <li><a href="#">Lap.matakuliah</a></li>
                             <li><a href="#">Lap.Mata Kuliah</a></li>
                             <li><a href="#">Lap.Kelas</a></li>
                         </ul>
@@ -82,41 +82,35 @@
     </nav>
 
     <div class="container">
-        <div class="modal fade" tabindex="-1" role="dialog" id="form-kelas">
+        <div class="modal fade" tabindex="-1" role="dialog" id="form-user">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header"><h3>Form Kelas</h3></div>
+                    <div class="modal-header"><h3>Form User</h3></div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="idkelas">ID Kelas</label>
-                            <input type="text" id="idkelas" class="form-control">
+                            <label for="userid">User ID</label>
+                            <input type="text" class="form-control"
+                                id="userid">
                         </div>
                         <div class="form-group">
-                            <label for="semester">Semester</label>
-                            <select id="semester" class="form-control">
-                                <option value="1">I</option>
-                                <option value="2">II</option>
-                                <option value="3">III</option>
-                                <option value="4">IV</option>
-                                <option value="5">V</option>
-                                <option value="6">VI</option>
-                                <option value="7">VII</option>
-                                <option value="8">VIII</option>
-                            </select>
+                            <label for="nama">Nama</label>
+                            <input type="text" class="form-control"
+                                id="nama">
                         </div>
                         <div class="form-group">
-                            <label for="jurusan">Jurusan</label>
-                            <select id="jurusan" class="form-control">
-                                <option value="ti">Teknik Informatika</option>
-                                <option value="si">Sistem Informasi</option>
-                            </select>
+                            <label for="alamat">Alamat</label>
+                            <textarea id="alamat" rows="5"
+                                class="form-control"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="sesi">Sesi</label>
-                            <select id="sesi" class="form-control   ">
-                                <option value="p">Pagi</option>
-                                <option value="m">Malam</option>
-                            </select>
+                            <label for="telepon">Telepon</label>
+                            <input type="text" class="form-control"
+                                id="telepon">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control"
+                                id="email">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -130,32 +124,30 @@
         </div>
 
         <div class="page-header">
-            <h1><span class="glyphicon glyphicon-briefcase"></span> 
-                Kelas <small>Berisi Informasi Data Kelas</small></h1> 
+            <h1><span class="glyphicon glyphicon-user"></span> 
+                User <small>Berisi Informasi Profil User</small></h1> 
         </div>
 
         <button class="btn btn-success pull-right" 
-            data-toggle="modal" data-target="#form-kelas">
+            data-toggle="modal" data-target="#form-user">
             <span class="glyphicon glyphicon-plus"></span> Tambah</button>
         <div class="clearfix"></div>
         <table class="table table-bordered table-striped table-hover"
             style="margin-top:10px;">
             <thead>
                 <tr>
-                    <th>ID kelas</th>
-                    <th>Semester</th>
-                    <th>Jurusan</th>
-                    <th>Sesi</th>
+                    <th>User ID</th>
+                    <th>Nama</th>
+                    <th>Email</th>
                     <th colspan="2">Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>TIVIIP1</td>
-                    <td>VII</td>
-                    <td>Teknik Informatika</td>
-                    <td>Pagi</td>
-                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-kelas">
+                    <td>001</td>
+                    <td>Budi</td>
+                    <td>budi@gmail.com</td>
+                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-user">
                         <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
                     </td>
                     <td><button class="btn btn-danger btn-block">
@@ -163,11 +155,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>TIVIIP1</td>
-                    <td>VII</td>
-                    <td>Teknik Informatika</td>
-                    <td>Pagi</td>
-                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-kelas">
+                    <td>001</td>
+                    <td>Budi</td>
+                    <td>budi@gmail.com</td>
+                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-user">
                         <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
                     </td>
                     <td><button class="btn btn-danger btn-block">
@@ -175,11 +166,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>TIVIIP1</td>
-                    <td>VII</td>
-                    <td>Teknik Informatika</td>
-                    <td>Pagi</td>
-                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-kelas">
+                    <td>001</td>
+                    <td>Budi</td>
+                    <td>budi@gmail.com</td>
+                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-user">
                         <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
                     </td>
                     <td><button class="btn btn-danger btn-block">
@@ -187,11 +177,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>TIVIIP1</td>
-                    <td>VII</td>
-                    <td>Teknik Informatika</td>
-                    <td>Pagi</td>
-                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-kelas">
+                    <td>001</td>
+                    <td>Budi</td>
+                    <td>budi@gmail.com</td>
+                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-user">
                         <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
                     </td>
                     <td><button class="btn btn-danger btn-block">
@@ -199,17 +188,17 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>TIVIIP1</td>
-                    <td>VII</td>
-                    <td>Teknik Informatika</td>
-                    <td>Pagi</td>
-                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-kelas">
+                    <td>001</td>
+                    <td>Budi</td>
+                    <td>budi@gmail.com</td>
+                    <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-user">
                         <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
                     </td>
                     <td><button class="btn btn-danger btn-block">
                         <span class="glyphicon glyphicon-trash"></span> Hapus</button>
                     </td>
                 </tr>
+                
             </tbody>
         </table>
     </div>

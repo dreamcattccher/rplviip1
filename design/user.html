@@ -102,16 +102,27 @@
                             <textarea id="alamat" rows="5"
                                 class="form-control"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="telepon">Telepon</label>
-                            <input type="text" class="form-control"
-                                id="telepon">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="telepon">Telepon</label>
+                                <input type="text" class="form-control"
+                                    id="telepon">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control"
+                                    id="email">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="status">Status</label>
+                                <select id="status" class="form-control">
+                                    <option value="ak">Akademik</option>
+                                    <option value="do">Dosen</option>
+                                    <option value="mh">Mahasiswa</option>
+                                </select>
+                            </div>    
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control"
-                                id="email">
-                        </div>
+                        
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-success">
@@ -139,6 +150,7 @@
                     <th>User ID</th>
                     <th>Nama</th>
                     <th>Email</th>
+                    <th>Status</th>
                     <th colspan="2">Action</th>
                 </tr>
             </thead>
@@ -147,6 +159,7 @@
                     <td>001</td>
                     <td>Budi</td>
                     <td>budi@gmail.com</td>
+                    <td>Mahasiswa</td>
                     <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-user">
                         <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
                     </td>
@@ -158,6 +171,7 @@
                     <td>001</td>
                     <td>Budi</td>
                     <td>budi@gmail.com</td>
+                    <td>Mahasiswa</td>
                     <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-user">
                         <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
                     </td>
@@ -169,6 +183,7 @@
                     <td>001</td>
                     <td>Budi</td>
                     <td>budi@gmail.com</td>
+                    <td>Akademik</td>
                     <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-user">
                         <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
                     </td>
@@ -180,6 +195,7 @@
                     <td>001</td>
                     <td>Budi</td>
                     <td>budi@gmail.com</td>
+                    <td>Dosen</td>
                     <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-user">
                         <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
                     </td>
@@ -191,6 +207,7 @@
                     <td>001</td>
                     <td>Budi</td>
                     <td>budi@gmail.com</td>
+                    <td>Akademik</td>
                     <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-user">
                         <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
                     </td>

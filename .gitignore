@@ -2,3 +2,9 @@
 /ci/tests
 /AbsensiApp/system
 /AbsensiApp/tests
+/AbsensiApp/composer.json
+/AbsensiApp/.editorconfig
+/AbsensiApp/contributing.md
+/AbsensiApp/index.php
+/AbsensiApp/license.txt
+/AbsensiApp/readme.rst

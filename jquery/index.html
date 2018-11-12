@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table,td {
+            border: 1px solid;
+            width: 480px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr><td>NIM</td><td>Nama</td></tr>
+        </thead>
+        <tbody id="data-mahasiswa">
+
+        </tbody>
+    </table>
+    <button id="tampil">Tampil</button>
+
+    <script src="jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#tampil").click(function(){
+                $.ajax({
+                    type: "ajax",
+                    url : "http://localhost/rplviip1/absensiapp/mahasiswa/semua",
+                    dataType: "JSON",
+                    success: function(data){
+                        var html= "";
+                        // for(i=0;i<data.length;i++){
+                        $.map(data,function(item){
+                            html += "<tr>"+
+                                        "<td>"+ item.nim +"</td>" +
+                                        "<td>"+ item.nama +"</td>" +
+                                    "</tr>";
+                        });
+                        $("#data-mahasiswa").html(html);
+                    }
+                })
+            })
+        });
+    </script>
+</body>
+</html>

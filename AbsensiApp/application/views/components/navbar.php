@@ -58,11 +58,11 @@
                     <a href="#" class="dropdown-toggle" 
                     data-toggle="dropdown" role="button">
                     <span class="glyphicon glyphicon-user"></span> 
-                    Admin <span class="caret"></span></a>
+                    <?= $this->session->userdata("nama"); ?> <span class="caret"></span></a>
 
                     <ul class="dropdown-menu">
                         <li><a href="profil">Profil</a></li>
-                        <li><a href="login">Logout</a></li>
+                        <li><a href="logout">Logout</a></li>
                     </ul>
                 </li>
             </ul>

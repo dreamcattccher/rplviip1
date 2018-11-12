@@ -33,7 +33,11 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('login_view');
+		if($this->session->userdata("islogin")){
+			redirect("beranda");
+		}else {
+			$this->load->view('login_view');
+		}
 	}
 
 	public function ceklogin(){
@@ -45,6 +49,13 @@ class Login extends CI_Controller {
 				$user = $this->login_model
 							->ambilUser($userid,$password);
 				if($user->num_rows() > 0){
+					$data_user = $user->row();
+					$this->session->set_userdata(
+						array(
+							"nama"=> $data_user->nama,
+							"islogin" => TRUE
+						)
+					);
 					redirect("beranda");
 				}else{
 					$this->session->set_flashdata("error-login",
@@ -59,5 +70,11 @@ class Login extends CI_Controller {
 				"Anda belum memasukkan Userid dan Password");
 			redirect("login");
 		}
+	}
+
+	public function logout(){
+		$this->session->unset_userdata("nama","islogin");
+		$this->session->sess_destroy();
+		redirect("login");
 	}
 }

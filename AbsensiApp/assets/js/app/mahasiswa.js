@@ -1,3 +1,4 @@
+var mode = "";
 $(document).ready(function(){
     tampilMahasiswa();
 
@@ -6,15 +7,21 @@ $(document).ready(function(){
     });
 
     $("#tambah").click(function(){
+        mode = "add";
         $("form")[0].reset();
         $("#mode").html("Tambah");
         $("#form-mahasiswa").modal("show");
     });
 
     $("tbody").on("click","#rubah",function(){
-        $("form")[0].reset();
-        $("#mode").html("Rubah");
-        $("#form-mahasiswa").modal("show");
+        mode = "edit";
+        var id = $(this).data("id");
+        bacaMahasiswa(id);
+    });
+
+    $("tbody").on("click","#hapus",function(){
+        var id = $(this).data("id");
+        hapusMahasiswa(id);
     });
 
     $("#simpan").click(function(){
@@ -23,15 +30,61 @@ $(document).ready(function(){
     });
 })
 
+function showMessage(mode){
+    var divMessage = "<div class='alert alert-success'>" +
+                            "Berhasil <strong>" + mode.toUpperCase() + "</strong> Data Mahasiswa" +
+                        "</div>";
+    $(divMessage)
+        .prependTo(".container")
+        .delay(2000)
+        .slideUp("slow");
+}
+
+function hapusMahasiswa(id){
+    if(confirm("Anda yakin hapus ?")){
+        $.ajax({
+            url: "mahasiswa/hapus/"+id,
+            type: "POST",
+            dataType: "JSON",
+            success: function(data){
+                if(data.status){
+                    tampilMahasiswa();
+                    showMessage("delete");
+                }
+            }
+        });
+    }
+}
+
+function bacaMahasiswa(id){
+    $("form")[0].reset();
+
+    $.ajax({
+        url: "mahasiswa/baca/"+id,
+        type: "POST",
+        dataType: "JSON",
+        success: function(data){
+            $("#nim").val(data.nim);
+            $("#nama").val(data.nama);
+            $("#alamat").val(data.alamat);
+            $("#telepon").val(data.telepon);
+
+            $("#mode").html("Rubah");
+            $("#form-mahasiswa").modal("show");
+        }
+    })
+}
+
 function simpanMahasiswa(){
     $.ajax({
-        url: "mahasiswa/simpan",
+        url: "mahasiswa/simpan/"+mode,
         type: "POST",
         data: $("form").serialize(),
         dataType: "JSON",
         success: function(data){
             if(data.status){
                 tampilMahasiswa();
+                showMessage(mode);
             }
         }
     })
@@ -50,10 +103,10 @@ function tampilMahasiswa(){
                             "<td>"+ data[i].nama +"</td>" + 
                             "<td>"+ data[i].alamat +"</td>" + 
                             "<td>"+ data[i].telepon +"</td>" +
-                            "<td><button id='rubah' class='btn btn-warning btn-block'>" +
+                            "<td><button id='rubah' class='btn btn-warning btn-block' data-id='" + data[i].nim + "'>" +
                                 "<span class='glyphicon glyphicon-pencil'></span> Rubah</button>" +
                             "</td>" +
-                            "<td><button class='btn btn-danger btn-block'>" +
+                            "<td><button id='hapus' class='btn btn-danger btn-block' data-id='" + data[i].nim + "'>" +
                                 "<span class='glyphicon glyphicon-trash'></span> Hapus</button>" +
                             "</td>" + 
                         "</tr>";

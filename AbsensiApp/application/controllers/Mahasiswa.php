@@ -17,7 +17,18 @@ class Mahasiswa extends CI_Controller {
 							->ambilMahasiswa()->result());
 	}
 
-	public function simpan(){
+	public function baca($id=null){
+		echo json_encode($this->mahasiswa_model
+			->getMahasiswa($id));
+	}
+
+	public function hapus($id){
+		echo json_encode(array(
+			"status" => $this->mahasiswa_model->deleteMahasiswa($id)
+		));
+	}
+
+	public function simpan($mode){
 		$data = array(
 			"nim" => $this->input->post("nim"),
 			"nama" => $this->input->post("nama"),
@@ -25,8 +36,13 @@ class Mahasiswa extends CI_Controller {
 			"telepon" => $this->input->post("telepon")
 		);
 
-		$status = $this->mahasiswa_model->createMahasiswa($data);
-
+		if($mode=="add"){
+			$status = $this->mahasiswa_model->createMahasiswa($data);
+		}elseif($mode=="edit"){
+			$status = $this->mahasiswa_model
+				->updateMahasiswa($this->input->post("nim"),$data);
+		}
+		
 		echo json_encode(array("status" => $status > 0));
 	}
 }

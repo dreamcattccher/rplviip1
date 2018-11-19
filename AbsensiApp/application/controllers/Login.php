@@ -7,7 +7,6 @@ class Login extends CI_Controller {
 		parent::__construct();
 		$this->load->model("login_model");
 		$this->load->helper("security");
-		$this->load->library("form_validation");
 	}
 
 	private function _validate(){

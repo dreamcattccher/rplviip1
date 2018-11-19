@@ -10,6 +10,8 @@ $(document).ready(function(){
         mode = "add";
         $("form")[0].reset();
         $("#mode").html("Tambah");
+        $("span.help-block").remove();
+        $(".form-group").removeClass("has-error");
         $("#form-mahasiswa").modal("show");
     });
 
@@ -26,7 +28,6 @@ $(document).ready(function(){
 
     $("#simpan").click(function(){
         simpanMahasiswa();
-        $("#form-mahasiswa").modal("hide");
     });
 })
 
@@ -85,6 +86,17 @@ function simpanMahasiswa(){
             if(data.status){
                 tampilMahasiswa();
                 showMessage(mode);
+                $("#form-mahasiswa").modal("hide");
+            }else{
+                $("span.help-block").remove();
+                $(".form-group").removeClass("has-error");
+
+                $.each(data.message,function(index,value){
+                    $("input[name="+index+"]")
+                        .after(value)
+                        .parent()
+                        .addClass("has-error");
+                });
             }
         }
     })

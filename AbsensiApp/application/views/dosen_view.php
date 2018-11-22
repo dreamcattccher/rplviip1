@@ -8,29 +8,31 @@ $this->load->view("components/navbar");
             <div class="modal-content">
                 <div class="modal-header"><h3>Form Dosen</h3></div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="iddosen">ID Dosen</label>
-                        <input type="text" id="iddosen" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="nama">Nama</label>
-                        <input type="text" id="nama" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="alamat">Alamat</label>
-                        <input type="text" id="alamat" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="telepon">Telepon</label>
-                        <input type="text" id="telepon" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control">
-                    </div>
+                    <form action="">
+                        <div class="form-group">
+                            <label for="iddosen">ID Dosen</label>
+                            <input type="text" id="iddosen" name="iddosen" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="nama">Nama</label>
+                            <input type="text" id="nama" name="nama" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat">Alamat</label>
+                            <textarea name="alamat" id="alamat" cols="30" rows="10" class='form-control'></textarea>                        
+                        </div>
+                        <div class="form-group">
+                            <label for="telepon">Telepon</label>
+                            <input type="text" id="telepon" name="telepon" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control">
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success">
+                    <button class="btn btn-success" id="simpan">
                     <span class="glyphicon glyphicon-floppy-disk"></span> Simpan</button>
                     <button class="btn btn-danger" data-dismiss="modal">
                     <span class="glyphicon glyphicon-remove"></span> Batal</button>
@@ -44,8 +46,11 @@ $this->load->view("components/navbar");
             Dosen <small>Berisi Informasi Data Dosen</small></h1> 
     </div>
 
-    <button class="btn btn-success pull-right" 
-        data-toggle="modal" data-target="#form-dosen">
+
+    <button class="btn btn-default" id="reload">
+        <span class="glyphicon glyphicon-refresh"></span> Reload
+    </button>
+    <button class="btn btn-success pull-right" id="tambah">
         <span class="glyphicon glyphicon-plus"></span> Tambah</button>
     <div class="clearfix"></div>
     <table class="table table-bordered table-striped table-hover"
@@ -60,88 +65,11 @@ $this->load->view("components/navbar");
                 <th colspan="2">Action</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>D002</td>
-                <td>Andi</td>
-                <td>Sekip</td>
-                <td>081XXXXX</td>
-                <td>andi@gmail.com</td>
-                <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-dosen">
-                    <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
-                </td>
-                <td><button class="btn btn-danger btn-block">
-                    <span class="glyphicon glyphicon-trash"></span> Hapus</button>
-                </td>
-            </tr>
-            <tr>
-                <td>D002</td>
-                <td>Andi</td>
-                <td>Sekip</td>
-                <td>081XXXXX</td>
-                <td>andi@gmail.com</td>
-                <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-dosen">
-                    <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
-                </td>
-                <td><button class="btn btn-danger btn-block">
-                    <span class="glyphicon glyphicon-trash"></span> Hapus</button>
-                </td>
-            </tr>
-            <tr>
-                <td>D002</td>
-                <td>Andi</td>
-                <td>Sekip</td>
-                <td>081XXXXX</td>
-                <td>andi@gmail.com</td>
-                <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-dosen">
-                    <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
-                </td>
-                <td><button class="btn btn-danger btn-block">
-                    <span class="glyphicon glyphicon-trash"></span> Hapus</button>
-                </td>
-            </tr>
-            <tr>
-                <td>D002</td>
-                <td>Andi</td>
-                <td>Sekip</td>
-                <td>081XXXXX</td>
-                <td>andi@gmail.com</td>
-                <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-dosen">
-                    <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
-                </td>
-                <td><button class="btn btn-danger btn-block">
-                    <span class="glyphicon glyphicon-trash"></span> Hapus</button>
-                </td>
-            </tr>
-            <tr>
-                <td>D002</td>
-                <td>Andi</td>
-                <td>Sekip</td>
-                <td>081XXXXX</td>
-                <td>andi@gmail.com</td>
-                <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-dosen">
-                    <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
-                </td>
-                <td><button class="btn btn-danger btn-block">
-                    <span class="glyphicon glyphicon-trash"></span> Hapus</button>
-                </td>
-            </tr>
-            <tr>
-                <td>D002</td>
-                <td>Andi</td>
-                <td>Sekip</td>
-                <td>081XXXXX</td>
-                <td>andi@gmail.com</td>
-                <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-dosen">
-                    <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
-                </td>
-                <td><button class="btn btn-danger btn-block">
-                    <span class="glyphicon glyphicon-trash"></span> Hapus</button>
-                </td>
-            </tr>
+        <tbody>            
         </tbody>
     </table>
 </div>
+<script src="assets/js/app/dosen.js"></script>
 <?php 
 $this->load->view("components/foot"); 
 ?>

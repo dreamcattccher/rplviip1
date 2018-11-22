@@ -8,7 +8,7 @@ $this->load->view("components/navbar");
             <div class="modal-content">
                 <div class="modal-header"><h3>Form <span id="mode"></span> Mahasiswa</h3></div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="" autocomplete="off">
                         <div class="form-group">
                             <label for="nim">NIM</label>
                             <input type="text" id="nim" class="form-control" name="nim">
@@ -19,7 +19,7 @@ $this->load->view("components/navbar");
                         </div>
                         <div class="form-group">
                             <label for="alamat">Alamat</label>
-                            <input type="text" id="alamat" class="form-control" name="alamat">
+                            <textarea name="alamat" id="alamat" cols="30" rows="10" class='form-control'></textarea>
                         </div>
                         <div class="form-group">
                             <label for="telepon">Telepon</label>

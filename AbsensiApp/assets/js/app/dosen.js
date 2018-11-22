@@ -1,9 +1,9 @@
 var mode = "";
 $(document).ready(function(){
-    tampilMahasiswa();
+    tampilDosen();
 
     $("#reload").click(function(){
-        tampilMahasiswa();
+        tampilDosen();
     });
 
     $("#tambah").click(function(){
@@ -12,8 +12,8 @@ $(document).ready(function(){
         $("#mode").html("Tambah");
         $("span.help-block").remove();
         $(".form-group").removeClass("has-error");
-        $("input[name='nim']").removeAttr("readonly");
-        $("#form-mahasiswa").modal("show");
+        $("input[name='iddosen']").removeAttr("readonly");
+        $("#form-dosen").modal("show");
     });
 
     $("tbody").on("click","#rubah",function(){
@@ -23,24 +23,24 @@ $(document).ready(function(){
         $("span.help-block").remove();
         $(".form-group").removeClass("has-error");
 
-        $("input[name='nim']").attr("readonly",true);
+        $("input[name='iddosen']").attr("readonly",true);
 
-        bacaMahasiswa(id);
+        bacaDosen(id);
     });
 
     $("tbody").on("click","#hapus",function(){
         var id = $(this).data("id");
-        hapusMahasiswa(id);
+        hapusDosen(id);
     });
 
     $("#simpan").click(function(){
-        simpanMahasiswa();
+        simpanDosen();
     });
 })
 
 function showMessage(mode){
     var divMessage = "<div class='alert alert-success'>" +
-                            "Berhasil <strong>" + mode.toUpperCase() + "</strong> Data Mahasiswa" +
+                            "Berhasil <strong>" + mode.toUpperCase() + "</strong> Data Dosen" +
                         "</div>";
     $(divMessage)
         .prependTo(".container")
@@ -48,15 +48,15 @@ function showMessage(mode){
         .slideUp("slow");
 }
 
-function hapusMahasiswa(id){
+function hapusDosen(id){
     if(confirm("Anda yakin hapus ?")){
         $.ajax({
-            url: "mahasiswa/hapus/"+id,
+            url: "dosen/hapus/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data){
                 if(data.status){
-                    tampilMahasiswa();
+                    tampilDosen();
                     showMessage("delete");
                 }
             }
@@ -64,36 +64,37 @@ function hapusMahasiswa(id){
     }
 }
 
-function bacaMahasiswa(id){
+function bacaDosen(id){
     $("form")[0].reset();
 
     $.ajax({
-        url: "mahasiswa/baca/"+id,
+        url: "dosen/baca/"+id,
         type: "POST",
         dataType: "JSON",
         success: function(data){
-            $("#nim").val(data.nim);
+            $("#iddosen").val(data.iddosen);
             $("#nama").val(data.nama);
             $("#alamat").val(data.alamat);
             $("#telepon").val(data.telepon);
+            $("#email").val(data.email);
 
             $("#mode").html("Rubah");
-            $("#form-mahasiswa").modal("show");
+            $("#form-dosen").modal("show");
         }
     })
 }
 
-function simpanMahasiswa(){
+function simpanDosen(){
     $.ajax({
-        url: "mahasiswa/simpan/"+mode,
+        url: "dosen/simpan/"+mode,
         type: "POST",
         data: $("form").serialize(),
         dataType: "JSON",
         success: function(data){
             if(data.status){
-                tampilMahasiswa();
+                tampilDosen();
                 showMessage(mode);
-                $("#form-mahasiswa").modal("hide");
+                $("#form-dosen").modal("hide");
             }else{
                 $("span.help-block").remove();
                 $(".form-group").removeClass("has-error");
@@ -111,23 +112,24 @@ function simpanMahasiswa(){
     })
 }
 
-function tampilMahasiswa(){
+function tampilDosen(){
     $.ajax({
         type: "ajax",
-        url: "mahasiswa/data",
+        url: "dosen/data",
         dataType: "JSON",
         success: function(data){
             var html = "";
             for(i=0;i < data.length;i++){
                 html += "<tr>" + 
-                            "<td>"+ data[i].nim +"</td>" + 
+                            "<td>"+ data[i].iddosen +"</td>" + 
                             "<td>"+ data[i].nama +"</td>" + 
                             "<td>"+ data[i].alamat +"</td>" + 
                             "<td>"+ data[i].telepon +"</td>" +
-                            "<td><button id='rubah' class='btn btn-warning btn-block' data-id='" + data[i].nim + "'>" +
+                            "<td>"+ data[i].email +"</td>" +
+                            "<td><button id='rubah' class='btn btn-warning btn-block' data-id='" + data[i].iddosen + "'>" +
                                 "<span class='glyphicon glyphicon-pencil'></span> Rubah</button>" +
                             "</td>" +
-                            "<td><button id='hapus' class='btn btn-danger btn-block' data-id='" + data[i].nim + "'>" +
+                            "<td><button id='hapus' class='btn btn-danger btn-block' data-id='" + data[i].iddosen + "'>" +
                                 "<span class='glyphicon glyphicon-trash'></span> Hapus</button>" +
                             "</td>" + 
                         "</tr>";

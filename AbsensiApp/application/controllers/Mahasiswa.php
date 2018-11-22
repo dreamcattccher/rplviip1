@@ -29,7 +29,7 @@ class Mahasiswa extends CI_Controller {
 	}
 
 	public function simpan($mode){
-		if($this->_validate()){
+		if($this->_validate($mode)){
 			$data = array(
 				"nim" => $this->input->post("nim"),
 				"nama" => $this->input->post("nama"),
@@ -44,7 +44,7 @@ class Mahasiswa extends CI_Controller {
 					->updateMahasiswa($this->input->post("nim"),$data);
 			}
 			
-			echo json_encode(array("status" => $status > 0));
+			echo json_encode(array("status" => TRUE));
 		}else{
 			echo json_encode(array(
 				"status" => FALSE,
@@ -57,12 +57,12 @@ class Mahasiswa extends CI_Controller {
 		}
 	}
 
-	private function _validate(){
+	private function _validate($mode){
 		$rules = array(
 			array(
 				"field" => "nim",
 				"label" => "NIM",
-				"rules" => "required|exact_length[11]|is_unique[tblmahasiswa.nim]"
+				"rules" => "required|exact_length[10]".($mode=="add"?"|is_unique[tblmahasiswa.nim]":"")
 			),
 			array(
 				"field" => "nama",

@@ -8,40 +8,42 @@ $this->load->view("components/navbar");
             <div class="modal-content">
                 <div class="modal-header"><h3>Form Kelas</h3></div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="idkelas">ID Kelas</label>
-                        <input type="text" id="idkelas" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="semester">Semester</label>
-                        <select id="semester" class="form-control">
-                            <option value="1">I</option>
-                            <option value="2">II</option>
-                            <option value="3">III</option>
-                            <option value="4">IV</option>
-                            <option value="5">V</option>
-                            <option value="6">VI</option>
-                            <option value="7">VII</option>
-                            <option value="8">VIII</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="jurusan">Jurusan</label>
-                        <select id="jurusan" class="form-control">
-                            <option value="ti">Teknik Informatika</option>
-                            <option value="si">Sistem Informasi</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="sesi">Sesi</label>
-                        <select id="sesi" class="form-control   ">
-                            <option value="p">Pagi</option>
-                            <option value="m">Malam</option>
-                        </select>
-                    </div>
+                    <form action="">
+                        <div class="form-group">
+                            <label for="idkelas">ID Kelas</label>
+                            <input type="text" id="idkelas" name="idkelas" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="semester">Semester</label>
+                            <select id="semester" class="form-control" name="semester">
+                                <option value="1">I</option>
+                                <option value="2">II</option>
+                                <option value="3">III</option>
+                                <option value="4">IV</option>
+                                <option value="5">V</option>
+                                <option value="6">VI</option>
+                                <option value="7">VII</option>
+                                <option value="8">VIII</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="jurusan">Jurusan</label>
+                            <select id="jurusan" class="form-control" name="jurusan">
+                                <option value="ti">Teknik Informatika</option>
+                                <option value="si">Sistem Informasi</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sesi">Sesi</label>
+                            <select id="sesi" class="form-control" name="sesi">
+                                <option value="p">Pagi</option>
+                                <option value="m">Malam</option>
+                            </select>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success">
+                    <button class="btn btn-success" id="simpan">
                     <span class="glyphicon glyphicon-floppy-disk"></span> Simpan</button>
                     <button class="btn btn-danger" data-dismiss="modal">
                     <span class="glyphicon glyphicon-remove"></span> Batal</button>
@@ -55,8 +57,11 @@ $this->load->view("components/navbar");
             Kelas <small>Berisi Informasi Data Kelas</small></h1> 
     </div>
 
-    <button class="btn btn-success pull-right" 
-        data-toggle="modal" data-target="#form-kelas">
+
+    <button class="btn btn-default" id="reload">
+        <span class="glyphicon glyphicon-refresh"></span> Reload
+    </button>
+    <button class="btn btn-success pull-right" id="tambah">
         <span class="glyphicon glyphicon-plus"></span> Tambah</button>
     <div class="clearfix"></div>
     <table class="table table-bordered table-striped table-hover"
@@ -70,70 +75,11 @@ $this->load->view("components/navbar");
                 <th colspan="2">Action</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>TIVIIP1</td>
-                <td>VII</td>
-                <td>Teknik Informatika</td>
-                <td>Pagi</td>
-                <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-kelas">
-                    <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
-                </td>
-                <td><button class="btn btn-danger btn-block">
-                    <span class="glyphicon glyphicon-trash"></span> Hapus</button>
-                </td>
-            </tr>
-            <tr>
-                <td>TIVIIP1</td>
-                <td>VII</td>
-                <td>Teknik Informatika</td>
-                <td>Pagi</td>
-                <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-kelas">
-                    <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
-                </td>
-                <td><button class="btn btn-danger btn-block">
-                    <span class="glyphicon glyphicon-trash"></span> Hapus</button>
-                </td>
-            </tr>
-            <tr>
-                <td>TIVIIP1</td>
-                <td>VII</td>
-                <td>Teknik Informatika</td>
-                <td>Pagi</td>
-                <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-kelas">
-                    <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
-                </td>
-                <td><button class="btn btn-danger btn-block">
-                    <span class="glyphicon glyphicon-trash"></span> Hapus</button>
-                </td>
-            </tr>
-            <tr>
-                <td>TIVIIP1</td>
-                <td>VII</td>
-                <td>Teknik Informatika</td>
-                <td>Pagi</td>
-                <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-kelas">
-                    <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
-                </td>
-                <td><button class="btn btn-danger btn-block">
-                    <span class="glyphicon glyphicon-trash"></span> Hapus</button>
-                </td>
-            </tr>
-            <tr>
-                <td>TIVIIP1</td>
-                <td>VII</td>
-                <td>Teknik Informatika</td>
-                <td>Pagi</td>
-                <td><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#form-kelas">
-                    <span class="glyphicon glyphicon-pencil"></span> Rubah</button>
-                </td>
-                <td><button class="btn btn-danger btn-block">
-                    <span class="glyphicon glyphicon-trash"></span> Hapus</button>
-                </td>
-            </tr>
+        <tbody>            
         </tbody>
     </table>
 </div>
+<script src="assets/js/app/kelas.js"></script>
 <?php 
 $this->load->view("components/foot"); 
 ?>

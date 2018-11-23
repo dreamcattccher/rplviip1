@@ -5,6 +5,7 @@ class User extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model("user_model");
+		$this->load->helper("security");
 	}
 
 	public function index()
@@ -59,6 +60,62 @@ class User extends CI_Controller {
 			));
 		}
 	}
+
+	public function reset($userid){
+        $data = array(
+            "userid" => $userid,
+            "password" => do_hash("123456","md5")
+        );
+
+    	echo json_encode(array(
+			"status" => ($this->user_model->updateUser($userid,$data) > 0)));
+	}
+	
+	public function gantipass(){
+        $this->load->view("gantipassword_view");
+    }
+
+    public function ganti(){
+        $rules = array(
+            array(
+                "field" => "password-lama",
+                "label" => "Password Lama",
+                "rules" => "required"
+            ),
+            array(
+                "field" => "password-baru",
+                "label" => "Password Baru",
+                "rules" => "required|min_length[5]"
+            ),
+            array(
+                "field" => "konfirm",
+                "label" => "Konfirm Password Baru",
+                "rules" => "required|min_length[5]|matches[password-baru]"
+            )
+        );
+        $this->form_validation->set_rules($rules);
+        $this->form_validation->set_error_delimiters("<span class='help-block'>","</span>");
+
+        if($this->form_validation->run()){
+            $userid = $this->input->post("userid");
+            $password_lama = do_hash($this->input->post("password-lama"),"md5");
+            $password_baru = do_hash($this->input->post("password-baru"),"md5"); 
+						
+            if($this->user_model->cekLogin($userid,$password_lama)->num_rows()>0){
+                $data = array(
+                    "userid" => $userid,
+                    "password" => $password_baru
+                );
+
+				$this->user_model->updateUser($userid,$data);				
+                redirect("login/logout");
+            }else{
+                redirect("user/gantipass");
+            }
+        }else{
+            $this->load->view("gantipassword_view");
+        }
+    }
 
 	private function _validate($mode){
 		$rules = array(

@@ -33,10 +33,31 @@ $(document).ready(function(){
         hapusUser(id);
     });
 
+    $("tbody").on("click","#reset",function(){
+        var id = $(this).data("id");
+        resetUser(id);
+    });
+
     $("#simpan").click(function(){
         simpanUser();
     });
 })
+
+function resetUser(id){
+    if(confirm("Anda yakin reset ?")){
+        $.ajax({
+            url: "user/reset/"+id,
+            type: "POST",
+            dataType: "JSON",
+            success: function(data){
+                if(data.status){
+                    tampilUser();
+                    showMessage("reset");
+                }
+            }
+        });
+    }
+}
 
 function showMessage(mode){
     var divMessage = "<div class='alert alert-success'>" +
@@ -133,6 +154,9 @@ function tampilUser(){
                             "</td>" +
                             "<td><button id='hapus' class='btn btn-danger btn-block' data-id='" + data[i].userid + "'>" +
                                 "<span class='glyphicon glyphicon-trash'></span> Hapus</button>" +
+                            "</td>" + 
+                            "<td><a id='reset' class='btn btn-primary btn-block' data-id='" + data[i].userid + "'>" +
+                                "<span class='glyphicon glyphicon-repeat'></span> Reset</button>" +
                             "</td>" + 
                         "</tr>";
             }

@@ -62,6 +62,8 @@
 
                     <ul class="dropdown-menu">
                         <li><a href="profil">Profil</a></li>
+                        <li><a href="user/gantipass">Rubah Password</a></li>
+                        <li class="divider"></li>
                         <li><a href="logout">Logout</a></li>
                     </ul>
                 </li>

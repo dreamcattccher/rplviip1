@@ -51,6 +51,7 @@ class Login extends CI_Controller {
 					$data_user = $user->row();
 					$this->session->set_userdata(
 						array(
+							"userid" => $data_user->userid,
 							"nama"=> $data_user->nama,
 							"islogin" => TRUE
 						)

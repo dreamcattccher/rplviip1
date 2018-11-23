@@ -2,7 +2,7 @@
 $this->load->view("components/head");
 $this->load->view("components/navbar"); 
 ?>
-<div class="container">
+<div class="container">    
     <div class="modal fade" tabindex="-1" role="dialog" id="form-user">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -77,7 +77,7 @@ $this->load->view("components/navbar");
                 <th>Telepon</th>
                 <th>Email</th>
                 <th>Status</th>
-                <th colspan="2">Action</th>
+                <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>            

@@ -39,4 +39,13 @@ class User_model extends CI_Model{
         
         return $query->row();
     }
+
+    public function cekLogin($userid,$password){
+        $query = $this->db
+                    ->where("userid",$userid)
+                    ->where("password",$password)
+                    ->get("tbluser");
+        
+        return $query;
+    }
 }

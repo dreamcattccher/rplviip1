@@ -84,6 +84,7 @@ $this->load->view("components/navbar");
         </tbody>
     </table>
 </div>
+<script src="assets/js/myfunction.js"></script>
 <script src="assets/js/app/user.js"></script>
 <?php 
 $this->load->view("components/foot"); 

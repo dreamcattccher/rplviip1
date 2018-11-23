@@ -121,7 +121,7 @@ function tampilMatakuliah(){
                 html += "<tr>" + 
                             "<td>"+ data[i].idmatakuliah +"</td>" + 
                             "<td>"+ data[i].nama +"</td>" + 
-                            "<td>"+ data[i].semester +"</td>" +                             
+                            "<td>"+ konversiSemester(data[i].semester) +"</td>" +                             
                             "<td><button id='rubah' class='btn btn-warning btn-block' data-id='" + data[i].idmatakuliah + "'>" +
                                 "<span class='glyphicon glyphicon-pencil'></span> Rubah</button>" +
                             "</td>" +

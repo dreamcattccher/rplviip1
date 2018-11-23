@@ -4,6 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class User extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
+		if(!$this->session->userdata("islogin")){
+			redirect("login");
+		}
 		$this->load->model("user_model");
 		$this->load->helper("security");
 	}
@@ -37,7 +40,8 @@ class User extends CI_Controller {
 				"alamat" => $this->input->post("alamat"),
 				"telepon" => $this->input->post("telepon"),
 				"email" => $this->input->post("email"),
-				"status" => $this->input->post("status")
+				"status" => $this->input->post("status"),
+				"password" => do_hash("123456","md5")
 			);
 	
 			if($mode=="add"){

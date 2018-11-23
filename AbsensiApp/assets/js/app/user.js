@@ -148,7 +148,7 @@ function tampilUser(){
                             "<td>"+ data[i].alamat +"</td>" + 
                             "<td>"+ data[i].telepon +"</td>" +
                             "<td>"+ data[i].email +"</td>" +
-                            "<td>"+ data[i].status +"</td>" +
+                            "<td>"+ konversiStatusUser(data[i].status) +"</td>" +
                             "<td><button id='rubah' class='btn btn-warning btn-block' data-id='" + data[i].userid + "'>" +
                                 "<span class='glyphicon glyphicon-pencil'></span> Rubah</button>" +
                             "</td>" +

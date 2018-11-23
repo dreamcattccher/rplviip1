@@ -67,6 +67,7 @@ $this->load->view("components/navbar");
         </tbody>
     </table>
 </div>
+<script src="assets/js/myfunction.js"></script>
 <script src="assets/js/app/matakuliah.js"></script>
 <?php
 $this->load->view("components/foot");

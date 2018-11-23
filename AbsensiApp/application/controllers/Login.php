@@ -49,14 +49,20 @@ class Login extends CI_Controller {
 							->ambilUser($userid,$password);
 				if($user->num_rows() > 0){
 					$data_user = $user->row();
-					$this->session->set_userdata(
-						array(
-							"userid" => $data_user->userid,
-							"nama"=> $data_user->nama,
-							"islogin" => TRUE
-						)
-					);
-					redirect("beranda");
+					if($data_user->status=="AKD"){
+						$this->session->set_userdata(
+							array(
+								"userid" => $data_user->userid,
+								"nama"=> $data_user->nama,
+								"islogin" => TRUE
+							)
+						);
+						redirect("beranda");
+					}else{
+						$this->session->set_flashdata("error-login",
+						"Anda tidak memiliki hak akses ke sistem");
+						redirect("login");
+					}
 				}else{
 					$this->session->set_flashdata("error-login",
 						"Userid dan Password Salah");

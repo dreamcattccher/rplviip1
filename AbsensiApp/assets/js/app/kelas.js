@@ -121,9 +121,9 @@ function tampilKelas(){
             for(i=0;i < data.length;i++){
                 html += "<tr>" + 
                             "<td>"+ data[i].idkelas +"</td>" + 
-                            "<td>"+ data[i].semester +"</td>" + 
-                            "<td>"+ data[i].jurusan +"</td>" + 
-                            "<td>"+ data[i].sesi +"</td>" +
+                            "<td>"+ konversiSemester(data[i].semester) +"</td>" + 
+                            "<td>"+ konversiJurusan(data[i].jurusan) +"</td>" + 
+                            "<td>"+ konversiSesi(data[i].sesi) +"</td>" +
                             "<td><button id='rubah' class='btn btn-warning btn-block' data-id='" + data[i].idkelas + "'>" +
                                 "<span class='glyphicon glyphicon-pencil'></span> Rubah</button>" +
                             "</td>" +

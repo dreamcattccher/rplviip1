@@ -4,6 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Matakuliah extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
+		if(!$this->session->userdata("islogin")){
+			redirect("login");
+		}
 		$this->load->model("matakuliah_model");
 	}
 

@@ -9,7 +9,7 @@ $this->load->view("components/navbar");
     </div>
     <div class="row">
         <div class="col-md-6">
-            <img src="assets/img/avatar.jpg" 
+            <img src="assets/img/<?= $this->session->userdata("userid") ?>.png" 
                 class="img-circle img-thumbnail">
         </div>
         <div class="col-md-6">
@@ -23,7 +23,8 @@ $this->load->view("components/navbar");
                             </button>".$message."</div>";
             }
             ?>
-            <form action="profil/simpan" method="POST">
+            <form action="profil/simpan" method="POST"
+                enctype="multipart/form-data">
                 <div class="form-group <?= form_error("userid")?"has-error":"" ?>">
                     <label for="userid">User ID</label>
                     <input type="text" class="form-control"
@@ -56,6 +57,12 @@ $this->load->view("components/navbar");
                         id="email" name="email"
                         value="<?= isset($profil)?$profil->email:set_value("email") ?>">
                     <?= form_error("email") ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="gambar">Gambar</label>
+                    <input type="file" name="gambar" id="gambar"
+                        accept="image/x-png" class="form-control">
                 </div>
                 <input type="submit" class="btn btn-success"
                     value="Simpan">

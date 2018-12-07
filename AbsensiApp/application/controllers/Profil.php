@@ -16,7 +16,6 @@ class Profil extends CI_Controller {
 
 	public function simpan(){
 		if($this->input->post()){
-			//echo $this->_validate(); exit();
 			if($this->_validate()){
 				$data = array(
 					"userid" => $this->input->post("userid"),
@@ -27,8 +26,25 @@ class Profil extends CI_Controller {
 				);
 				$this->user_model->updateUser(
 					$this->input->post("userid"),$data);
-				$this->session->set_flashdata("error-message",
+
+				$this->session->set_userdata("nama",$this->input->post("nama"));
+
+				$config = array(
+					"upload_path" => "assets/img",
+					"allowed_types" => "png",
+					"overwrite" => TRUE,
+					"file_name" => $this->input->post("userid")
+				);
+
+				$this->load->library("upload",$config);
+				if($this->upload->do_upload("gambar")){
+					$this->session->set_flashdata("error-message",
 					"Berhasil UPDATE data user");
+				}else{
+					$this->session->set_flashdata("error-message",
+					$this->upload->display_errors());
+				}
+
 				redirect("profil");
 			}else{
 				$this->load->view('profil_view');

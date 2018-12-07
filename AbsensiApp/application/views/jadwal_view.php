@@ -149,6 +149,26 @@ $this->load->view("components/navbar");
             Jadwal Kelas & Mahasiswa <small>Berisi Informasi Jadwal Kelas & Mahasiswa </small></h1> 
     </div>
 
+    <div class="form-inline">
+        <div class="form-group">
+            <label for="jurusan">Jurusan</label>
+            <select name="jurusan" id="jurusan"
+                class="form-control">
+                <option value="si">Sistem Informasi</option>
+                <option value="ti">Teknik Informatika</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sesi">Sesi</label>
+            <select name="sesi" id="sesi"
+                class="form-control">
+                <option value="p">Pagi</option>
+                <option value="m">Malam</option>
+            </select>
+        </div>
+        <button id="filter" class="btn btn-primary">Filter</button>
+    </div>
+
     <table class="table table-bordered table-striped table-hover"
         style="margin-top:10px;">
         <thead>

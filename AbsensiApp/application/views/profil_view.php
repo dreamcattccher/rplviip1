@@ -13,31 +13,49 @@ $this->load->view("components/navbar");
                 class="img-circle img-thumbnail">
         </div>
         <div class="col-md-6">
-            <form action="">
-                <div class="form-group">
+            <?php
+            $message = $this->session->flashdata('error-message');
+            if($message){
+                echo "<div class='alert alert-success alert-dismissible'>
+                            <button type='button' class='close' 
+                                data-dismiss='alert'>
+                                <span>&times;</span>
+                            </button>".$message."</div>";
+            }
+            ?>
+            <form action="profil/simpan" method="POST">
+                <div class="form-group <?= form_error("userid")?"has-error":"" ?>">
                     <label for="userid">User ID</label>
                     <input type="text" class="form-control"
-                        id="userid">
+                        id="userid" readonly name="userid"
+                        value="<?= isset($profil)?$profil->userid:set_value("userid") ?>">
                 </div>
-                <div class="form-group">
+                <div class="form-group <?= form_error("nama")?"has-error":"" ?>">
                     <label for="nama">Nama</label>
                     <input type="text" class="form-control"
-                        id="nama">
+                        id="nama" name="nama"
+                        value="<?= isset($profil)?$profil->nama:set_value("nama") ?>">
+                    <?= form_error("nama") ?>
                 </div>
-                <div class="form-group">
+                <div class="form-group <?= form_error("alamat")?"has-error":"" ?>">
                     <label for="alamat">Alamat</label>
-                    <textarea id="alamat" rows="5"
-                        class="form-control"></textarea>
+                    <textarea id="alamat" name="alamat" rows="5"
+                        class="form-control"><?= isset($profil)?$profil->alamat:set_value("alamat") ?>
+                    </textarea>
                 </div>
-                <div class="form-group">
+                <div class="form-group <?= form_error("telepon")?"has-error":"" ?>">
                     <label for="telepon">Telepon</label>
                     <input type="text" class="form-control"
-                        id="telepon">
+                        id="telepon" name="telepon"
+                        value="<?= isset($profil)?$profil->telepon:set_value("telepon") ?>">
+                    <?= form_error("telepon") ?>
                 </div>
-                <div class="form-group">
+                <div class="form-group <?= form_error("email")?"has-error":"" ?>">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control"
-                        id="email">
+                    <input type="text" class="form-control"
+                        id="email" name="email"
+                        value="<?= isset($profil)?$profil->email:set_value("email") ?>">
+                    <?= form_error("email") ?>
                 </div>
                 <input type="submit" class="btn btn-success"
                     value="Simpan">

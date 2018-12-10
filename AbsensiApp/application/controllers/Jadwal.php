@@ -9,7 +9,9 @@ class Jadwal extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('jadwal_view');
+		$data["mahasiswa"] = $this->jadwal_model
+				->ambilMahasiswa()->result();
+		$this->load->view('jadwal_view',$data);
 	}
 
 	public function ambiljadwal($jurusan,$sesi){
@@ -18,5 +20,17 @@ class Jadwal extends CI_Controller {
 					->ambilJadwalkelas($jurusan,$sesi)->result());
 	}
 
+	public function kelasMahasiswa($idkelas){
+		echo json_encode($this->jadwal_model
+			->ambilMahasiswaKelas($idkelas)->result());
+	}
 
+	public function hapusKelasMahasiswa($idkelas,$nim){
+		$berhasil = $this->jadwal_model
+					->hapusMahasiswaKelas($idkelas,$nim);
+
+		echo json_encode(array(
+			"status" => $berhasil
+		));
+	}
 }

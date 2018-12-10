@@ -81,24 +81,22 @@ $this->load->view("components/navbar");
                 <div class="modal-header"><h3>Form Kelas Mahasiswa</h3></div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="idkelas">Kelas</label>
-                        <select id="idkelas" class="form-control">
-                            <option value="tiviip1">TI VII P1</option>
-                            <option value="tiip1">TI I P1</option>
-                            <option value="siiip1">SI II P1</option>
-                            <option value="siiiip1">SI III P1</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label for="idmahasiswa">Mahasiswa</label>
-                        <select id="idmahasiswa" class="form-control">
-                            <option value="ad">Andi</option>
-                            <option value="bd">Budi</option>
-                            <option value="jh">Johan</option>
-                            <option value="al">Alex</option>
+                        <select id="idmahasiswa" class="form-control" multiple>
+                        <?php
+                        foreach($mahasiswa as $item):
+                            echo "<option value='{$item->nim}'>
+                                    {$item->nim} - {$item->nama}
+                                </option>";
+                        endforeach;
+                        ?>
                         </select>
                     </div>
-                    <table class="table table-bordered">
+                    <button id="simpan-mahasiswa" 
+                        class="btn btn-success pull-right">Simpan</button>
+                    <div class="clearfix"></div>
+                    <table class="table table-bordered"
+                        style="margin-top:10px">
                         <thead>
                             <tr>
                                 <th>Kelas</th>
@@ -106,37 +104,11 @@ $this->load->view("components/navbar");
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>TIVIIP1</td>
-                                <td>Budi</td>
-                                <td><button class="btn btn-danger btn-block">
-                                    <span class="glyphicon glyphicon-trash"></span> Hapus</button></td>
-                            </tr>
-                            <tr>
-                                <td>TIVIIP1</td>
-                                <td>Andi</td>
-                                <td><button class="btn btn-danger btn-block">
-                                    <span class="glyphicon glyphicon-trash"></span> Hapus</button></td>
-                            </tr>
-                            <tr>
-                                <td>TIVIIP1</td>
-                                <td>Alex</td>
-                                <td><button class="btn btn-danger btn-block">
-                                    <span class="glyphicon glyphicon-trash"></span> Hapus</button></td>
-                            </tr>
-                            <tr>
-                                <td>TIVIIP1</td>
-                                <td>Johan</td>
-                                <td><button class="btn btn-danger btn-block">
-                                    <span class="glyphicon glyphicon-trash"></span> Hapus</button></td>
-                            </tr>
+                        <tbody id="tabel-mahasiswakelas">
                         </tbody>
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success">
-                    <span class="glyphicon glyphicon-floppy-disk"></span> Simpan</button>
                     <button class="btn btn-danger" data-dismiss="modal">
                     <span class="glyphicon glyphicon-remove"></span> Batal</button>
                 </div>
@@ -181,78 +153,12 @@ $this->load->view("components/navbar");
                 <th colspan="2">Action</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>TIVIIP1</td>
-                <td>VII</td>
-                <td>Teknik Informatika</td>
-                <td>Pagi</td>
-                <td class="jsiswa">20</td>
-                <td>
-                    <button class="btn btn-primary btn-block"
-                        data-toggle="modal" data-target="#form-kelas-matakuliah">
-                        Mata Kuliah</button>
-                </td>
-                <td>
-                    <button class="btn btn-warning btn-block"
-                        data-toggle="modal" data-target="#form-kelas-mahasiswa">
-                        Mahasiswa</button>
-                </td>
-            </tr>
-            <tr>
-                <td>TIVIIP1</td>
-                <td>VII</td>
-                <td>Teknik Informatika</td>
-                <td>Pagi</td>
-                <td class="jsiswa">20</td>
-                <td>
-                    <button class="btn btn-primary btn-block"
-                        data-toggle="modal" data-target="#form-kelas-matakuliah">
-                        Mata Kuliah</button>
-                </td>
-                <td>
-                    <button class="btn btn-warning btn-block"
-                        data-toggle="modal" data-target="#form-kelas-mahasiswa">
-                        Mahasiswa</button>
-                </td>
-            </tr>
-            <tr>
-                <td>TIVIIP1</td>
-                <td>VII</td>
-                <td>Teknik Informatika</td>
-                <td>Pagi</td>
-                <td class="jsiswa">20</td>
-                <td>
-                    <button class="btn btn-primary btn-block"
-                        data-toggle="modal" data-target="#form-kelas-matakuliah">
-                        Mata Kuliah</button>
-                </td>
-                <td>
-                    <button class="btn btn-warning btn-block"
-                        data-toggle="modal" data-target="#form-kelas-mahasiswa">
-                        Mahasiswa</button>
-                </td>
-            </tr>
-            <tr>
-                <td>TIVIIP1</td>
-                <td>VII</td>
-                <td>Teknik Informatika</td>
-                <td>Pagi</td>
-                <td class="jsiswa">20</td>
-                <td>
-                    <button class="btn btn-primary btn-block"
-                        data-toggle="modal" data-target="#form-kelas-matakuliah">
-                        Mata Kuliah</button>
-                </td>
-                <td>
-                    <button class="btn btn-warning btn-block"
-                        data-toggle="modal" data-target="#form-kelas-mahasiswa">
-                        Mahasiswa</button>
-                </td>
-            </tr>
+        <tbody id="tabel-jadwal">
         </tbody>
     </table>
 </div>
+<script src="assets/js/myfunction.js"></script>
+<script src="assets/js/app/jadwal.js"></script>
 <?php
 $this->load->view("components/foot");
 ?>

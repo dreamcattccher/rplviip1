@@ -13,11 +13,21 @@ $(document).ready(function(){
         simpanKelasMahasiswa(idkelas,mahasiswa);
     })
 
+    $("#simpan-matakuliah").click(function(){
+        var matakuliah = $("#idmatakuliah").val();
+        var idkelas = $("#simpan-matakuliah").data("idkelas");
+
+        simpanKelasMatakuliah(idkelas,matakuliah);
+    })
+
     $("tbody#tabel-jadwal")
         .on("click","#matakuliah",function(){
             var idkelas = $(this).data("idkelas");
 
-            console.log(idkelas);
+            $("#simpan-matakuliah").data("idkelas",idkelas);
+
+            ambilKelasMatakuliah(idkelas);
+            $("#form-kelas-matakuliah").modal("show");
         })
         .on("click","#mahasiswa",function(){
             var idkelas = $(this).data("idkelas");
@@ -34,6 +44,15 @@ $(document).ready(function(){
             var nim = $(this).data("nim");
 
             hapusKelasMahasiswa(idkelas,nim);
+        }
+    })
+
+    $("tbody#tabel-matakuliahkelas").on("click","#hapus",function(){
+        if(confirm("Anda yakin hapus? ")){
+            var idkelas = $(this).data("idkelas");
+            var idmatakuliah = $(this).data("idmatakuliah");
+
+            hapusKelasMatakuliah(idkelas,idmatakuliah);
         }
     })
 })
@@ -55,6 +74,23 @@ function simpanKelasMahasiswa(idkelas,mahasiswa){
     })
 }
 
+function simpanKelasMatakuliah(idkelas,matakuliah){
+    $.ajax({
+        url: "jadwal/simpanKelasMatakuliah",
+        type: "POST",
+        dataType: "JSON",
+        data: {
+            "matakuliah": matakuliah,
+            "idkelas": idkelas
+        },
+        success: function(data){
+            if(data.status){
+                ambilKelasMatakuliah(idkelas);
+            }
+        }
+    })
+}
+
 function hapusKelasMahasiswa(idkelas,nim){
     $.ajax({
         url: "jadwal/hapusKelasMahasiswa/"+idkelas+"/"+nim,
@@ -63,6 +99,19 @@ function hapusKelasMahasiswa(idkelas,nim){
         success: function(data){
             if(data.status){
                 ambilKelasMahasiswa(idkelas);
+            }
+        }
+    })
+}
+
+function hapusKelasMatakuliah(idkelas,idmatakuliah){
+    $.ajax({
+        url: "jadwal/hapusKelasMatakuliah/"+idkelas+"/"+idmatakuliah,
+        type: "POST",
+        dataType: "JSON",
+        success: function(data){
+            if(data.status){
+                ambilKelasMatakuliah(idkelas);
             }
         }
     })
@@ -85,6 +134,27 @@ function ambilKelasMahasiswa(idkelas){
                         "</tr>";
             });
             $("tbody#tabel-mahasiswakelas").html(html);
+        }
+    })
+}
+
+function ambilKelasMatakuliah(idkelas){
+    $.ajax({
+        url: "jadwal/kelasmatakuliah/"+idkelas,
+        type: "POST",
+        dataType: "JSON",
+        success: function(data){
+            var html = "";
+            $.each(data,function(key,item){
+                html += "<tr>" + 
+                            "<td>"+item.idkelas+"</td>" + 
+                            "<td>"+item.nama+"</td>" + 
+                            "<td><button data-idkelas='"+item.idkelas+"' " +
+                            " data-idmatakuliah='"+item.idmatakuliah+"' id='hapus' class='btn btn-danger btn-block'>" + 
+                                "<span class='glyphicon glyphicon-trash'></span> Hapus</button></td>" +
+                        "</tr>";
+            });
+            $("tbody#tabel-matakuliahkelas").html(html);
         }
     })
 }

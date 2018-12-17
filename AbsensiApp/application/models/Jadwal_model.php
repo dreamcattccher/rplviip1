@@ -23,11 +23,29 @@ class Jadwal_model extends CI_Model{
         return $query;
     }
 
+    public function ambilMatakuliah(){
+        $query = $this->db
+                    ->get("tblmatakuliah");
+
+        return $query;
+    }
+
     public function ambilMahasiswaKelas($idkelas){
         $query = $this->db
                     ->select("a.idkelas,a.nim,b.nama")
                     ->from("tblkelasmahasiswa a")
                     ->join("tblmahasiswa b","a.nim=b.nim")
+                    ->where("a.idkelas",$idkelas)
+                    ->get();
+
+        return $query;
+    }
+
+    public function ambilMatakuliahKelas($idkelas){
+        $query = $this->db
+                    ->select("a.idkelas,a.idmatakuliah,b.nama")
+                    ->from("tblkelasmatakuliah a")
+                    ->join("tblmatakuliah b","a.idmatakuliah=b.idmatakuliah")
                     ->where("a.idkelas",$idkelas)
                     ->get();
 
@@ -41,8 +59,21 @@ class Jadwal_model extends CI_Model{
                 ->delete("tblkelasmahasiswa");
     }
 
+    public function hapusMatakuliahKelas($idkelas,$idmatakuliah){
+        return $this->db
+                ->where("idkelas",$idkelas)
+                ->where("idmatakuliah",$idmatakuliah)
+                ->delete("tblkelasmatakuliah");
+    }
+
     public function simpanMahasiswaKelas($data){
         $this->db->insert("tblkelasmahasiswa",$data);
+
+        return $this->db->affected_rows();
+    }
+
+    public function simpanMatakuliahKelas($data){
+        $this->db->insert("tblkelasmatakuliah",$data);
 
         return $this->db->affected_rows();
     }

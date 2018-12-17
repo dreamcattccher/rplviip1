@@ -9,27 +9,17 @@ $this->load->view("components/navbar");
                 <div class="modal-header"><h3>Form Kelas Mata Kuliah</h3></div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="idkelas">Kelas</label>
-                        <select id="idkelas" class="form-control">
-                            <option value="tiviip1">TI VII P1</option>
-                            <option value="tiip1">TI I P1</option>
-                            <option value="siiip1">SI II P1</option>
-                            <option value="siiiip1">SI III P1</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label for="idmatakuliah">Mata Kuliah</label>
-                        <select id="idmatakuliah" class="form-control">
-                            <option value="bd">Basis Data</option>
-                            <option value="al">Algoritma</option>
-                            <option value="vb1">Visual Basic 1</option>
-                            <option value="vb2">Visual Basic 2</option>
-                            <option value="ag">Agama</option>
-                            <option value="pr">Project</option>
-                            <option value="pw">Pemograman Web</option>
-                            <option value="pb">Pemograman Piranti Bergerak</option>
+                        <select id="idmatakuliah" class="form-control" multiple>
+                        <?php
+                        foreach($matakuliah as $item):
+                            echo "<option value='$item->idmatakuliah'>$item->nama</option>";
+                        endforeach;
+                        ?>
                         </select>
                     </div>
+                    <button id="simpan-matakuliah" class="btn btn-success pull-right" style="margin-bottom:10px">Simpan</button>
+                    <div class="clear-fix"></div>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -38,37 +28,11 @@ $this->load->view("components/navbar");
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>TIVIIP1</td>
-                                <td>Project</td>
-                                <td><button class="btn btn-danger btn-block">
-                                    <span class="glyphicon glyphicon-trash"></span> Hapus</button></td>
-                            </tr>
-                            <tr>
-                                <td>TIVIIP1</td>
-                                <td>Project</td>
-                                <td><button class="btn btn-danger btn-block">
-                                    <span class="glyphicon glyphicon-trash"></span> Hapus</button></td>
-                            </tr>
-                            <tr>
-                                <td>TIVIIP1</td>
-                                <td>Project</td>
-                                <td><button class="btn btn-danger btn-block">
-                                    <span class="glyphicon glyphicon-trash"></span> Hapus</button></td>
-                            </tr>
-                            <tr>
-                                <td>TIVIIP1</td>
-                                <td>Project</td>
-                                <td><button class="btn btn-danger btn-block">
-                                    <span class="glyphicon glyphicon-trash"></span> Hapus</button></td>
-                            </tr>
+                        <tbody id="tabel-matakuliahkelas">
                         </tbody>
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success">
-                    <span class="glyphicon glyphicon-floppy-disk"></span> Simpan</button>
                     <button class="btn btn-danger" data-dismiss="modal">
                     <span class="glyphicon glyphicon-remove"></span> Batal</button>
                 </div>

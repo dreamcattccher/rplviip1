@@ -98,19 +98,16 @@ $this->load->view("components/navbar");
         <div class="form-group">
             <label for="kelas">Kelas</label>
             <select name="" id="kelas" class="form-control">
-                <option value="tiviip1">TI VII P1</option>
-                <option value="tiviip1">TI VII P1</option>
-                <option value="tiviip1">TI VII P1</option>
-                <option value="tiviip1">TI VII P1</option>
+            <?php
+            foreach($kelas as $item):
+                echo "<option value='{$item->idkelas}'>{$item->idkelas}</option>";
+            endforeach;
+            ?>
             </select>
         </div>
         <div class="form-group">
             <label for="matakuliah">Mata Kuliah</label>
             <select name="" id="matakuliah" class="form-control">
-                <option value="bd">Basis Data</option>
-                <option value="al">Algoritma</option>
-                <option value="ag">Agama</option>
-                <option value="pr">Project</option>
             </select>
         </div>
         <input type="submit" value="Submit" class="btn btn-primary">
@@ -192,6 +189,7 @@ $this->load->view("components/navbar");
         </tbody>
     </table>
 </div>
+<script src="assets/js/app/absensi.js"></script>
 <?php 
 $this->load->view("components/foot"); 
 ?>

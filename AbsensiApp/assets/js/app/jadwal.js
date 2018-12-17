@@ -6,6 +6,13 @@ $(document).ready(function(){
         ambilJadwal(jurusan,sesi);
     });
 
+    $("#simpan-mahasiswa").click(function(){
+        var mahasiswa = $("#idmahasiswa").val();
+        var idkelas = $("#simpan-mahasiswa").data("idkelas");
+
+        simpanKelasMahasiswa(idkelas,mahasiswa);
+    })
+
     $("tbody#tabel-jadwal")
         .on("click","#matakuliah",function(){
             var idkelas = $(this).data("idkelas");
@@ -14,6 +21,8 @@ $(document).ready(function(){
         })
         .on("click","#mahasiswa",function(){
             var idkelas = $(this).data("idkelas");
+
+            $("#simpan-mahasiswa").data("idkelas",idkelas);
 
             ambilKelasMahasiswa(idkelas);
             $("#form-kelas-mahasiswa").modal("show");
@@ -28,6 +37,23 @@ $(document).ready(function(){
         }
     })
 })
+
+function simpanKelasMahasiswa(idkelas,mahasiswa){
+    $.ajax({
+        url: "jadwal/simpanKelasMahasiswa",
+        type: "POST",
+        dataType: "JSON",
+        data: {
+            "mahasiswa": mahasiswa,
+            "idkelas": idkelas
+        },
+        success: function(data){
+            if(data.status){
+                ambilKelasMahasiswa(idkelas);
+            }
+        }
+    })
+}
 
 function hapusKelasMahasiswa(idkelas,nim){
     $.ajax({

@@ -33,4 +33,21 @@ class Jadwal extends CI_Controller {
 			"status" => $berhasil
 		));
 	}
+
+	public function simpanKelasMahasiswa(){
+		$mahasiswa = $this->input->post("mahasiswa");
+		$idkelas = $this->input->post("idkelas");
+
+		foreach($mahasiswa as $nim):
+			$this->jadwal_model
+				->simpanMahasiswaKelas(array(
+					"idkelas" => $idkelas,
+					"nim" => $nim
+				));
+		endforeach;
+
+		echo json_encode(
+			array("status" => TRUE)
+		);
+	}
 }

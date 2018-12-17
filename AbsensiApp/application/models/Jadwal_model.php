@@ -40,4 +40,10 @@ class Jadwal_model extends CI_Model{
                 ->where("nim",$nim)
                 ->delete("tblkelasmahasiswa");
     }
+
+    public function simpanMahasiswaKelas($data){
+        $this->db->insert("tblkelasmahasiswa",$data);
+
+        return $this->db->affected_rows();
+    }
 }

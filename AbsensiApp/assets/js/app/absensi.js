@@ -4,7 +4,95 @@ $(document).ready(function(){
     $("#kelas").change(function(){
         ambilMatakuliah($(this).val());
     })
+
+    $("#submit").click(function(){
+        var idkelas = $("#kelas").val();
+        var idmatakuliah = $("#matakuliah").val();
+
+        ambilAbsensi(idkelas,idmatakuliah);
+    })
+
+    $("tbody#absensi").on("click","#lihat",function(){
+        var idkelas = $(this).data("idkelas");
+        var idmatakuliah = $(this).data("idmatakuliah");
+        var pertemuan = $(this).data("pertemuan");
+
+        ambilAbsensidetail(idkelas,idmatakuliah,pertemuan);
+        $("#form-absensidtl").modal("show");
+    })
+
+    $("#simpan").click(function(){
+        console.log($("form").serializeArray());
+    })
 })
+
+function updateabsensi(data){
+    $.ajax({
+        url: "absensi/update",
+        type: "POST",
+        dataType:"JSON",
+        data: {
+            data: data 
+        },
+        success: function(data){
+            console.log(data);
+        }
+    })
+}
+
+function ambilAbsensidetail(idkelas,idmatakuliah,pertemuan){
+    $.ajax({
+        url: "absensi/getdetail/" + idkelas + "/" + idmatakuliah + "/" + pertemuan,
+        type: "POST",
+        dataType: "JSON",
+        success: function(data){
+            var html = "";
+            $.each(data,function(key,item){
+                html += "<tr>" + 
+                            "<td>"+item.nim+"</td>" + 
+                            "<td>"+item.nama+"</td>" + 
+                            "<td>" + 
+                                "<select name='status["+item.idabsensi+"]' " +
+                                    "id='' class='form-control'>" + 
+                                    "<option value='h' "+ (item.status== "h"?"selected":"") +">Hadir</option>" +
+                                    "<option value='a' "+ (item.status== "a"?"selected":"") +">Absen</option>" + 
+                                    "<option value='i' "+ (item.status== "i"?"selected":"") +">Izin</option>" + 
+                                    "<option value='s' "+ (item.status== "s"?"selected":"") +">Sakit</option>" + 
+                                "</select>" + 
+                            "</td>" + 
+                        "</tr>";
+            });
+            $("tbody#absensidetail").html(html);
+        }
+    })
+}
+
+function ambilAbsensi(idkelas,idmatakuliah){
+    $.ajax({
+        url: "absensi/get/" + idkelas + "/" + idmatakuliah,
+        type: "POST",
+        dataType: "JSON",
+        success: function(data){
+            var html = "";
+            $.each(data,function(key,item){
+                html += "<tr> " + 
+                    "<td>"+ item.pertemuan +"</td>" + 
+                    "<td>"+ item.hadir + "</td>" + 
+                    "<td>"+ item.absen +"</td>" + 
+                    "<td>"+ item.izin +"</td>" + 
+                    "<td>"+ item.sakit +"</td>" + 
+                    "<td>"+ item.total +"</td>" + 
+                    "<td><button id='lihat' class='btn btn-warning btn-block' " + 
+                        "data-idkelas='"+ idkelas + "' " + 
+                        "data-idmatakuliah='" + idmatakuliah + "' " +
+                        "data-pertemuan='"+ item.pertemuan +"'> " + 
+                    "<span class='glyphicon glyphicon-eye-open'></span> Lihat</button></td>" + 
+                "</tr>";
+            });
+            $("tbody#absensi").html(html);
+        }
+    });
+}
 
 function ambilMatakuliah(idkelas){
     $.ajax({

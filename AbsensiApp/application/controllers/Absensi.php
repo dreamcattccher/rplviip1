@@ -21,4 +21,25 @@ class Absensi extends CI_Controller {
 		echo json_encode($this->absensi_model
 			->ambilMatakuliah($idkelas)->result());
 	}
+
+	public function get($idkelas,$idmatakuliah){
+		echo json_encode($this->absensi_model
+			->ambilabsensi($idkelas,$idmatakuliah)->result());
+	}
+
+	public function getdetail($idkelas,$idmatakuliah,$pertemuan){
+		echo json_encode($this->absensi_model
+			->ambilabsensidetail($idkelas,$idmatakuliah,$pertemuan)
+			->result());
+	}
+
+	public function update(){
+		$data = $this->input->post("data");
+		$result = [];
+		foreach($data as $absensi):
+			array_push($result,$absensi[0]->name);
+		endforeach;
+
+		echo json_encode($result);
+	}
 }

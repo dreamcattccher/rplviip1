@@ -22,7 +22,16 @@ $(document).ready(function(){
     })
 
     $("#simpan").click(function(){
-        console.log($("form").serializeArray());
+        //buat object beri nama data
+        var data = {};        
+        // ambil semua nilai select dengan nama status
+        $("select[name='status']").map(function(){    
+            //ambil nilai satus masukin ke object data dengan index idabsensi                    
+            data[$(this).data("idabsensi")] = $(this).val();
+        })
+
+        //panggil fungsi simpan absensi
+        updateabsensi(data);
     })
 })
 
@@ -34,8 +43,9 @@ function updateabsensi(data){
         data: {
             data: data 
         },
-        success: function(data){
-            console.log(data);
+        success: function(data){            
+            //jika proses simpan absensi berhasil.. tutup modal
+            $("#form-absensidtl").modal("hide");
         }
     })
 }
@@ -52,7 +62,7 @@ function ambilAbsensidetail(idkelas,idmatakuliah,pertemuan){
                             "<td>"+item.nim+"</td>" + 
                             "<td>"+item.nama+"</td>" + 
                             "<td>" + 
-                                "<select name='status["+item.idabsensi+"]' " +
+                                "<select name='status' data-idabsensi='"+item.idabsensi+"' " +
                                     "id='' class='form-control'>" + 
                                     "<option value='h' "+ (item.status== "h"?"selected":"") +">Hadir</option>" +
                                     "<option value='a' "+ (item.status== "a"?"selected":"") +">Absen</option>" + 

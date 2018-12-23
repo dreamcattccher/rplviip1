@@ -34,12 +34,18 @@ class Absensi extends CI_Controller {
 	}
 
 	public function update(){
-		$data = $this->input->post("data");
-		$result = [];
-		foreach($data as $absensi):
-			array_push($result,$absensi[0]->name);
-		endforeach;
+		//ambil data absensi yang dikirim ajax
+		$data = $this->input->post("data");		
 
-		echo json_encode($result);
+		//looping data status absensinya satu per satu
+		foreach($data as $idabsensi=>$status){
+			//simpan data absensi
+			$this->absensi_model->updateabsensi($idabsensi,$status);
+		}
+
+		//jika selsesai kirim status TRUE ke ajax
+		echo json_encode(array(
+			"status" => TRUE
+		));
 	}
 }

@@ -45,10 +45,9 @@
                     Laporan <span class="caret"></span></a>
 
                     <ul class="dropdown-menu">
-                        <li><a href="#">Lap.Mahasiswa</a></li>
-                        <li><a href="#">Lap.Dosen</a></li>
-                        <li><a href="#">Lap.Mata Kuliah</a></li>
-                        <li><a href="#">Lap.Kelas</a></li>
+                        <li><a href="laporan/mahasiswa" target="_blank">Lap.Mahasiswa</a></li>
+                        <li><a href="laporan/dosen" target="_blank">Lap.Dosen</a></li>
+                        <li><a href="laporan/absensi" target="_blank">Lap.Absensi</a></li>
                     </ul>
                 </li>
             </ul>

@@ -1,12 +1,11 @@
 <?php 
 $this->load->view("components/head");
-$this->load->view("components/navbar"); 
 ?>
 <div class="container">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
 			<form action="<?= $action ?>" method="GET">
-				<div class="panel panel-info">
+				<div class="panel panel-info" style="margin:10px">
 					<div class="panel-heading">Dialog Kelas</div>
 					<div class="panel-body">
                         <div class="form-group">
